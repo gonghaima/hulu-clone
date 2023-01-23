@@ -2,7 +2,6 @@ import {
   HomeIcon,
   BoltIcon,
   MagnifyingGlassCircleIcon,
-  MagnifyingGlassIcon,
   UserIcon,
   CheckBadgeIcon,
   RectangleStackIcon
