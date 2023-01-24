@@ -14,7 +14,6 @@ export default function Thumbnail(props: ThumbnailPropType): JSX.Element {
       className="p-2 group cursor-pointer transition duration-200 
   ease-in transform sm:hover:scale-105 hover:z-50"
     >
-      {JSON.stringify(movie)}
       <Image
         className="object-contain"
         // layout="fill"
