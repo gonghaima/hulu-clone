@@ -2,12 +2,11 @@ import Head from "next/head";
 import Header from "@/components/Header";
 import Nav from "@/components/Nav";
 import Results from "@/components/Results";
-import { GetServerSideProps } from "next/types";
+import { GetServerSidePropsContext } from "next/types";
 import requests from "@/utils/requests";
+import { SEARCH_RESULT } from "../types/Movie";
 
-export default function Home(props) {
-  console.log({props});
-  
+export default function Home({ results }: SEARCH_RESULT): JSX.Element {
   return (
     <>
       <Head>
@@ -18,25 +17,28 @@ export default function Home(props) {
       </Head>
 
       {/* Header */}
-      <Header/>
+      <Header />
 
       {/* Nav */}
-      <Nav/>
+      <Nav />
 
       {/* Results */}
-      <Results/>
+      <Results results={results} />
     </>
   );
 }
 
-export async function getServerSideProps(context): GetServerSideProps {
+export async function getServerSideProps(context: GetServerSidePropsContext) {
   const genre = context.query.genre;
-  const request = await fetch(`https://api.themoviedb.org/3${requests[genre]?.url}` || requests.fetchTrending.url);
-  const results = await request.json();
+  const request = await fetch(
+    genre && `https://api.themoviedb.org/3${requests[genre as keyof typeof requests]?.url}` ||
+      requests.fetchTrending.url
+  );
+  const { results }: SEARCH_RESULT = await request.json();
 
   return {
-    props:{
-      results
-    }
-  }
+    props: {
+      results,
+    },
+  };
 }

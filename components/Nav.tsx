@@ -1,18 +1,6 @@
 import requests from "@/utils/requests";
-import {
-  HomeIcon,
-  BoltIcon,
-  MagnifyingGlassCircleIcon,
-  MagnifyingGlassIcon,
-  UserIcon,
-  CheckBadgeIcon,
-  RectangleStackIcon,
-} from "@heroicons/react/24/outline";
 
 import {useRouter} from "next/router";
-
-import Image from "next/image";
-import HeaderItem from "./HeaderItem";
 
 export default function Nav() { 
   const router = useRouter();
