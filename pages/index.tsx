@@ -3,7 +3,7 @@ import Header from "@/components/Header";
 import Nav from "@/components/Nav";
 import Results from "@/components/Results";
 import { GetServerSidePropsContext } from "next/types";
-import requests from "@/utils/requests";
+import requests, {baseUrl} from "@/utils/requests";
 import { SEARCH_RESULT } from "../types/Movie";
 
 export default function Home({ results }: SEARCH_RESULT): JSX.Element {
@@ -31,8 +31,8 @@ export default function Home({ results }: SEARCH_RESULT): JSX.Element {
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const genre = context.query.genre;
   const request = await fetch(
-    genre && `https://api.themoviedb.org/3${requests[genre as keyof typeof requests]?.url}` ||
-      requests.fetchTrending.url
+    baseUrl+(genre && `${requests[genre as keyof typeof requests]?.url}` ||
+      `${requests.fetchTrending.url}`)
   );
   const { results }: SEARCH_RESULT = await request.json();
 
