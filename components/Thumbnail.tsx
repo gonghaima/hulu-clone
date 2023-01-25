@@ -1,16 +1,19 @@
 import Image from "next/image";
 import { HandThumbUpIcon } from "@heroicons/react/24/outline";
 import { MOVIE } from "@/types/Movie";
+import { forwardRef } from "react";
 
 type ThumbnailPropType = {
   movie: MOVIE;
 };
 
-export default function Thumbnail(props: ThumbnailPropType): JSX.Element {
+// eslint-disable-next-line react/display-name
+const Thumbnail =forwardRef( (props: ThumbnailPropType, ref): JSX.Element => {
   const BASE_URL = "https://image.tmdb.org/t/p/original";
   const movie: MOVIE = props.movie;
   return (
     <div
+    ref={ref}
       className="p-2 group cursor-pointer transition duration-200 
   ease-in transform sm:hover:scale-105 hover:z-50"
     >
@@ -38,4 +41,6 @@ export default function Thumbnail(props: ThumbnailPropType): JSX.Element {
       </div>
     </div>
   );
-}
+});
+
+export default Thumbnail;

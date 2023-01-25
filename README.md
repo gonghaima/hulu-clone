@@ -1,3 +1,17 @@
+# Website
+https://hulu-clone-green-gamma.vercel.app/
+
+- NextJs
+- ReactJS
+- Typescript
+- TailwindCSS
+- PostCSS
+- SSR
+- SSG
+- Vercel Host / CI / CD
+- react-flip-move
+- heroicons
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
